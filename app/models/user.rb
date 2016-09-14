@@ -20,4 +20,11 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 
     has_many :events,  :foreign_key => "owner_id", :class_name => "Event"
+
+private
+
+  def create_remember_token
+    self.remember_token = User.encrypt(User.new_remember_token)
+  end
+
 end

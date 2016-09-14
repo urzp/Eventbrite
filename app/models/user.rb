@@ -19,4 +19,5 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 
+    has_many :events,  :foreign_key => "owner_id", :class_name => "Event"
 end

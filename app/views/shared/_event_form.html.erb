@@ -1,0 +1,12 @@
+<%= form_for(@event) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.label "Name your Event" %><br>
+    <%= f.text_field :name %><br><br>
+    <%= f.label "Date Event" %><br><br>
+    <%= f.datetime_field :date %><br><br>
+    <%= f.label "Event localion" %><br><br>
+    <%= f.text_field :location %><br><br>
+
+    <%= f.submit "Create" %>
+<% end %>

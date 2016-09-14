@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :events
+
   resources :sessions, only: [:new, :create, :destroy]
 
   root  'static_pages#home'

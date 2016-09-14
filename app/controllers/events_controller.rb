@@ -3,9 +3,9 @@ class EventsController < ApplicationController
       @event = current_user.events.build(evevt_params)
       if @event.save
         flash[:success] = "Event created!"
-
+        redirect_to root_url
       else
-        
+        redirect_to root_url
       end
     end
 

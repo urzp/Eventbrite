@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
 
     has_many :events,  :foreign_key => "owner_id", :class_name => "Event"
 
+    has_many :attended_events, :through => :join_tables, :source => :user_event
+    has_many :join_tables,  :foreign_key => :user_id, :class_name => "EventUser"
+
 private
 
   def create_remember_token

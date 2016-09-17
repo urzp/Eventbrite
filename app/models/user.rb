@@ -3,6 +3,10 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   before_create :create_remember_token
 
+  def upcoming_events
+    self.attended_events.select{|ev| ev.data >= Date.today}
+  end
+
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end

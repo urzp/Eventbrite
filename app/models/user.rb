@@ -4,7 +4,11 @@ class User < ActiveRecord::Base
   before_create :create_remember_token
 
   def upcoming_events
-    self.attended_events.select{|ev| ev.data >= Date.today}
+    self.attended_events.select{|ev| ev.date >= Date.today}
+  end
+
+  def previous_events
+    self.attended_events.select{|ev| ev.date < Date.today}
   end
 
   def User.new_remember_token

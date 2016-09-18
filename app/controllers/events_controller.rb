@@ -10,8 +10,6 @@ class EventsController < ApplicationController
     end
 
     def show
-      @event = Event.find(params[:id])
-      @guests = @event.guests
     end
 
     def destroy

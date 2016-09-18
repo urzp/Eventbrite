@@ -1,4 +1,10 @@
 class EventsController < ApplicationController
+
+    def index
+      @events_past = Event.all.select{|ev_i| ev_i.past?}
+      @events_future = Event.all.select{|ev_i| ev_i.future?}
+    end
+
     def create
       @event = current_user.events.build(evevt_params)
       if @event.save

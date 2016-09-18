@@ -3,4 +3,12 @@ class Event < ActiveRecord::Base
   has_many :guests, :through => :join_tables, :source => :event_user
 
   belongs_to :owner, :class_name => "User"
+
+  def future?
+    self.date >= Date.today
+  end
+
+  def past?
+    self.date < Date.today
+  end
 end
